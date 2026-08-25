@@ -1,0 +1,28 @@
+channels:
+    - conda-forge
+    - ucb-bar
+    - nodefaults
+
+dependencies:
+    # https://conda-forge.org/feedstock-outputs/
+    #   filterable list of all conda-forge packages
+    # https://conda-forge.org/#contribute
+    #   instructions on adding a recipe
+    # https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/pkg-specs.html#package-match-specifications
+    #   documentation on package_spec syntax for constraining versions
+    - python=3.12
+
+    - sphinx
+    - Pygments
+    - sphinx-autobuild
+    - sphinx_rtd_theme
+    - requests
+    - sphinx-tabs
+    - sphinx-copybutton
+
+    - setuptools<82.0.0
+
+    - pip
+    - pip:
+        - Sphinx-Substitution-Extensions
+        - docstrfmt==1.9.0
