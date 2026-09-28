@@ -187,3 +187,24 @@ You can find other publications, including publications that *use* FireSim on th
 [boom]: https://github.com/ucb-bar/riscv-boom
 [userpubs]: /publications.md#userpapers
 [chipyard]: https://github.com/ucb-bar/chipyard
+
+
+## Step-by-step user guide
+
+FireSim requires a Linux manager environment and a supported on-premises or cloud FPGA target. Decide which target you will use before installing dependencies.
+
+1. **Select a target and follow its setup guide.** For AWS EC2 F2, start with [AWS F2 setup](docs/Getting-Started-Guides/AWS-EC2-F2-Getting-Started/); for a local board, start with [on-premises FPGA setup](docs/Getting-Started-Guides/On-Premises-FPGA-Getting-Started/). These guides cover host, cloud credentials, FPGA shell, and manager requirements.
+2. **Prepare the FireSim repository and manager.** Complete the repo setup and manager-instance steps for the selected target. Keep the FireSim and Chipyard revisions compatible.
+3. **Choose a target design and workload.** Select the generated RTL/configuration, then define the software workload with the documented FireMarshal workflow. Review the example runtime configuration in the getting-started guide before editing it.
+4. **Build the FPGA image.** Follow the target-specific guide to build the simulator/AFI or bitstream and deploy it to the selected FPGA. Record the build configuration because the generated image is tied to its target and design.
+5. **Run a simulation.** Configure the topology and runtime parameters, launch a single-node workload first, and inspect serial output, logs, and results. Scale to a cluster after the single-node path works.
+6. **Analyze and debug.** Use the manager's run artifacts, profiling and debugging guides to inspect performance, RTL behavior, and workload progress. Use FireAxe partitioned multi-FPGA workflows only when the design exceeds one FPGA's capacity.
+
+### Functionality map
+
+- FPGA-accelerated, cycle-accurate full-system RTL simulation, from a single SoC to multi-node clusters.
+- On-premises and cloud FPGA targets; target-specific manager setup, image builds, runtime configuration, topologies, and workload deployment.
+- Hardware/software models for system I/O such as DRAM, Ethernet, disks, and UART, plus Linux workloads and interactive access to simulated systems.
+- Workload automation through FireMarshal; debugging/profiling; and FireAxe fast, exact, and NoC partitioning modes.
+- The detailed guides are indexed in [docs](docs/), including [getting-started guides](docs/Getting-Started-Guides/), [workloads](docs/Advanced-Usage/Workloads/), [manager](docs/Advanced-Usage/Manager/), and [FireAxe](docs/Advanced-Usage/FireAxe-Partitioning-onto-Multiple-FPGAs/).
+
